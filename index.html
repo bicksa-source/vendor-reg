@@ -4,111 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نموذج تسجيل البائع</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            direction: rtl;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        .container {
-            max-width: 600px;
-            margin: auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            box-sizing: border-box;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>نموذج تسجيل البائع</h1>
-        <form id="vendorForm">
-            <div class="form-group">
-                <label for="companyName">اسم الشركة</label>
-                <input type="text" id="companyName" name="companyName" required />
-            </div>
-            <div class="form-group">
-                <label for="industry">الصناعة</label>
-                <input type="text" id="industry" name="industry" required />
-            </div>
-            <div class="form-group">
-                <label for="servicesDescription">وصف الخدمات</label>
-                <textarea id="servicesDescription" name="servicesDescription" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="qualificationDescription">وصف المؤهلات</label>
-                <textarea id="qualificationDescription" name="qualificationDescription" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="profileUrl">رابط الملف الشخصي</label>
-                <input type="url" id="profileUrl" name="profileUrl" required />
-            </div>
-            <div class="form-group">
-                <label for="portfolioUrl">رابط المحفظة</label>
-                <input type="url" id="portfolioUrl" name="portfolioUrl" required />
-            </div>
-            <div class="form-group">
-                <label for="catalogUrl">رابط الكتالوج</label>
-                <input type="url" id="catalogUrl" name="catalogUrl" required />
-            </div>
-            <div class="form-group">
-                <label for="website">الموقع الإلكتروني</label>
-                <input type="url" id="website" name="website" required />
-            </div>
-            <div class="form-group">
-                <label for="contactName">اسم المتصل</label>
-                <input type="text" id="contactName" name="contactName" required />
-            </div>
-            <div class="form-group">
-                <label for="position">الوظيفة</label>
-                <input type="text" id="position" name="position" required />
-            </div>
-            <div class="form-group">
-                <label for="phone">رقم الهاتف</label>
-                <input type="tel" id="phone" name="phone" required />
-            </div>
-            <div class="form-group">
-                <label for="email">البريد الإلكتروني</label>
-                <input type="email" id="email" name="email" required />
-            </div>
-            <button type="submit">إرسال</button>
-        </form>
-    </div>
-    <script>
-        document.getElementById('vendorForm').onsubmit = function(event) {
-            event.preventDefault();
-            // هنا يمكنك معالجة البيانات المرسلة
-            alert('تم إرسال النموذج بنجاح!');
-        };
-    </script>
+    <h1>نموذج تسجيل البائع</h1>
+    <form action="https://script.google.com/macros/s/AKfycbyZMq5aw3qVUp2UgfoUlWWw4Gpq7ts9bxUYLkPWXYJpcyfqOuXcZd4w4l32Q5_1aO5SkA/exec" method="POST">
+        <label for="name">اسم البائع:</label><br>
+        <input type="text" id="name" name="name" required><br>
+        <label for="email">البريد الإلكتروني:</label><br>
+        <input type="email" id="email" name="email" required><br>
+        <label for="phone">رقم الهاتف:</label><br>
+        <input type="tel" id="phone" name="phone" required><br>
+        <input type="submit" value="تسجيل"> 
+    </form>
 </body>
 </html>
