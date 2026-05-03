@@ -5,36 +5,240 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نموذج تسجيل الموردين</title>
     <style>
-        /* Improved styles for better design */
-        body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px; }
-        /* Add additional styles here */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            direction: rtl;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        .header {
+            background: white;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border-bottom: 3px solid #667eea;
+            flex-wrap: wrap;
+        }
+        .logo-section {
+            flex-shrink: 0;
+        }
+        .logo {
+            max-width: 120px;
+            height: auto;
+        }
+        .header-text {
+            flex-grow: 1;
+            text-align: right;
+        }
+        .company-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .form-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #667eea;
+            margin-top: 10px;
+        }
+        .form-content {
+            padding: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+            font-size: 14px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="url"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        input[type="url"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+        }
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .optional {
+            font-size: 12px;
+            color: #999;
+            margin-top: 3px;
+        }
+        .required {
+            color: #e74c3c;
+            margin-left: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        button:active {
+            transform: translateY(0);
+        }
+        .form-section {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .form-section:last-of-type {
+            border-bottom: none;
+        }
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
     </style>
 </head>
 <body>
-    <div>
-        <img src="logo.png" alt="Logo" style="float:left; margin-right:10px;">
-        <h1>نموذج تسجيل الموردين</h1>
+    <div class="container">
+        <div class="header">
+            <div class="logo-section">
+                <img src="logo.png" alt="BIC Logo" class="logo">
+            </div>
+            <div class="header-text">
+                <div class="company-title">شركة بناء وإبداع للمقاولات العامة</div>
+                <div class="form-title">نموذج تسجيل الموردين</div>
+            </div>
+        </div>
+        
+        <div class="form-content">
+            <form action="https://script.google.com/macros/s/AKfycbyZMq5aw3qVUp2UgfoUlWWw4Gpq7ts9bxUYLkPWXYJpcyfqOuXcZd4w4l32Q5_1aO5SkA/exec" method="POST">
+                
+                <!-- معلومات الشركة -->
+                <div class="form-section">
+                    <div class="section-title">معلومات الشركة</div>
+                    
+                    <div class="form-group">
+                        <label for="companyName">اسم الشركة <span class="required">*</span></label>
+                        <input type="text" id="companyName" name="companyName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="industry">المجال <span class="required">*</span></label>
+                        <input type="text" id="industry" name="industry" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="servicesDescription">وصف الخدمات <span class="required">*</span></label>
+                        <textarea id="servicesDescription" name="servicesDescription" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="qualificationDescription">وصف المؤهلات <span class="required">*</span></label>
+                        <textarea id="qualificationDescription" name="qualificationDescription" required></textarea>
+                    </div>
+                </div>
+                
+                <!-- الملفات والروابط -->
+                <div class="form-section">
+                    <div class="section-title">الملفات والروابط</div>
+                    
+                    <div class="form-group">
+                        <label for="profileUrl">الملف التعريفي</label>
+                        <input type="url" id="profileUrl" name="profileUrl">
+                        <div class="optional">اختياري</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="portfolioUrl">معرض الأعمال (Portfolio)</label>
+                        <input type="url" id="portfolioUrl" name="portfolioUrl">
+                        <div class="optional">اختياري</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="catalogUrl">رابط الكتالوج</label>
+                        <input type="url" id="catalogUrl" name="catalogUrl">
+                        <div class="optional">اختياري</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="website">الموقع الإلكتروني</label>
+                        <input type="url" id="website" name="website">
+                        <div class="optional">اختياري</div>
+                    </div>
+                </div>
+                
+                <!-- معلومات الاتصال -->
+                <div class="form-section">
+                    <div class="section-title">معلومات الاتصال</div>
+                    
+                    <div class="form-group">
+                        <label for="contactName">جهة الإتصال <span class="required">*</span></label>
+                        <input type="text" id="contactName" name="contactName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="position">المسمى الوظيفي <span class="required">*</span></label>
+                        <input type="text" id="position" name="position" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">رقم الهاتف <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">البريد الإلكتروني <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+                
+                <button type="submit">تسجيل الموردين</button>
+            </form>
+        </div>
     </div>
-    <form>
-        <label for="industry">المجال (اختياري):</label>
-        <input type="text" id="industry" name="industry"><br>
-
-        <label for="profile">الملف التعريفي (اختياري):</label>
-        <input type="text" id="profile" name="profile"><br>
-
-        <label for="portfolio">معرض الأعمال (Portfolio) (اختياري):</label>
-        <input type="text" id="portfolio" name="portfolio"><br>
-
-        <label for="contactName">جهة الإتصال:</label>
-        <input type="text" id="contactName" name="contactName"><br>
-
-        <label for="jobTitle">المسمى الوظيفي:</label>
-        <input type="text" id="jobTitle" name="jobTitle"><br>
-
-        <label for="companyName">شركة البناء والإبداع للمقاولات العامة:</label>
-        <input type="text" id="companyName" name="companyName"><br>
-        <!-- Add form sections for organization, optional field indicators, and improve design here -->
-        <input type="submit" value="إرسال">
-    </form>
 </body>
 </html>
