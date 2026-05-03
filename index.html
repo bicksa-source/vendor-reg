@@ -57,6 +57,24 @@
             color: #667eea;
             margin-top: 10px;
         }
+        @media (max-width: 600px) {
+            .header {
+                flex-direction: column;   /* Stack logo on top */
+                text-align: center;       /* Optional: center on mobile */
+            }
+
+            .header-text {
+                text-align: right;        /* Keep titles right-aligned if you prefer */
+                width: 100%;
+            }
+
+            .logo-section {
+                width: 100%;
+                display: flex;
+                justify-content: center;  /* Center logo on mobile */
+            }
+        }
+
         .form-content {
             padding: 30px;
         }
