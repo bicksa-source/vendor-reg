@@ -3,18 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نموذج تسجيل البائع</title>
+    <title>نموذج تسجيل الموردين</title>
+    <style>
+        /* Improved styles for better design */
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px; }
+        /* Add additional styles here */
+    </style>
 </head>
 <body>
-    <h1>نموذج تسجيل البائع</h1>
-    <form action="https://script.google.com/macros/s/AKfycbyZMq5aw3qVUp2UgfoUlWWw4Gpq7ts9bxUYLkPWXYJpcyfqOuXcZd4w4l32Q5_1aO5SkA/exec" method="POST">
-        <label for="name">اسم البائع:</label><br>
-        <input type="text" id="name" name="name" required><br>
-        <label for="email">البريد الإلكتروني:</label><br>
-        <input type="email" id="email" name="email" required><br>
-        <label for="phone">رقم الهاتف:</label><br>
-        <input type="tel" id="phone" name="phone" required><br>
-        <input type="submit" value="تسجيل"> 
+    <div>
+        <img src="logo.png" alt="Logo" style="float:left; margin-right:10px;">
+        <h1>نموذج تسجيل الموردين</h1>
+    </div>
+    <form>
+        <label for="industry">المجال (اختياري):</label>
+        <input type="text" id="industry" name="industry"><br>
+
+        <label for="profile">الملف التعريفي (اختياري):</label>
+        <input type="text" id="profile" name="profile"><br>
+
+        <label for="portfolio">معرض الأعمال (Portfolio) (اختياري):</label>
+        <input type="text" id="portfolio" name="portfolio"><br>
+
+        <label for="contactName">جهة الإتصال:</label>
+        <input type="text" id="contactName" name="contactName"><br>
+
+        <label for="jobTitle">المسمى الوظيفي:</label>
+        <input type="text" id="jobTitle" name="jobTitle"><br>
+
+        <label for="companyName">شركة البناء والإبداع للمقاولات العامة:</label>
+        <input type="text" id="companyName" name="companyName"><br>
+        <!-- Add form sections for organization, optional field indicators, and improve design here -->
+        <input type="submit" value="إرسال">
     </form>
 </body>
 </html>
