@@ -164,12 +164,19 @@
         }
         .success-message {
             display: none;
-            background: #d4edda;
-            color: #155724;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
             text-align: center;
+            padding: 60px 20px;
+        }
+
+        .success-message h2 {
+            color: #764ba2;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .success-message p {
+            color: #666;
+            font-size: 18px;
         }
         .error-message {
             display: none;
@@ -197,7 +204,7 @@
         <div class="form-content">
             <div class="success-message" id="successMessage">تم تسجيل الموردين بنجاح! شكراً لك.</div>
             <div class="error-message" id="errorMessage">حدث خطأ في الإرسال. يرجى المحاولة مرة أخرى.</div>
-            
+            <div id="formWrapper">
             <form id="vendorForm">
                 <div class="form-section">
                     <div class="section-title">معلومات الشركة</div>
@@ -262,47 +269,42 @@
                 </div>
                 <button type="submit" id="submitBtn">تسجيل الموردين</button>
             </form>
+            </div>
         </div>
     </div>
 
     <script>
-        document.getElementById('vendorForm').addEventListener('submit', function(e) {
+document.getElementById('vendorForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
-    const form = this;
+    const formWrapper = document.getElementById('formWrapper');
     const successMsg = document.getElementById('successMessage');
     const errorMsg = document.getElementById('errorMessage');
     const submitBtn = document.getElementById('submitBtn');
     
-    // Hide error message if it was showing from a previous attempt
-    errorMsg.style.display = 'none';
-    
-    const formData = new FormData(form);
+    const formData = new FormData(this);
     const data = {};
+    formData.forEach((value, key) => { data[key] = value; });
     
-    formData.forEach((value, key) => {
-        data[key] = value;
-    });
-    
+    // UI Feedback
     submitBtn.disabled = true;
     submitBtn.textContent = 'جاري الإرسال...';
+    errorMsg.style.display = 'none';
     
     fetch('https://script.google.com/macros/s/AKfycbyZMq5aw3qVUp2UgfoUlWWw4Gpq7ts9bxUYLkPWXYJpcyfqOuXcZd4w4l32Q5_1aO5SkA/exec', {
         method: 'POST',
-        mode: 'no-cors',
-        headers: {
-            'Content-Type': 'application/json'
-        },
+        mode: 'no-cors', // Google Apps Script requires this
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     })
-    .then(response => {
-        // HIDE THE FORM
-        form.style.display = 'none';
+    .then(() => {
+        // SUCCESS: Hide the entire form area
+        formWrapper.style.display = 'none';
         
-        // SHOW THE SUCCESS MESSAGE
+        // Show the success message
         successMsg.style.display = 'block';
         
-        // OPTIONAL: Scroll to top so they see the message clearly
+        // Scroll to the top of the container to ensure they see it
         window.scrollTo({ top: 0, behavior: 'smooth' });
     })
     .catch(error => {
