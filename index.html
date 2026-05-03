@@ -267,50 +267,51 @@
 
     <script>
         document.getElementById('vendorForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const form = this;
-            const successMsg = document.getElementById('successMessage');
-            const errorMsg = document.getElementById('errorMessage');
-            const submitBtn = document.getElementById('submitBtn');
-            
-            successMsg.style.display = 'none';
-            errorMsg.style.display = 'none';
-            
-            const formData = new FormData(form);
-            const data = {};
-            
-            formData.forEach((value, key) => {
-                data[key] = value;
-            });
-            
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'جاري الإرسال...';
-            
-            fetch('https://script.google.com/macros/s/AKfycbyZMq5aw3qVUp2UgfoUlWWw4Gpq7ts9bxUYLkPWXYJpcyfqOuXcZd4w4l32Q5_1aO5SkA/exec', {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => {
-                form.reset();
-                successMsg.style.display = 'block';
-                setTimeout(() => {
-                    successMsg.style.display = 'none';
-                }, 5000);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                errorMsg.style.display = 'block';
-            })
-            .finally(() => {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'تسجيل الموردين';
-            });
-        });
+    e.preventDefault();
+    
+    const form = this;
+    const successMsg = document.getElementById('successMessage');
+    const errorMsg = document.getElementById('errorMessage');
+    const submitBtn = document.getElementById('submitBtn');
+    
+    // Hide error message if it was showing from a previous attempt
+    errorMsg.style.display = 'none';
+    
+    const formData = new FormData(form);
+    const data = {};
+    
+    formData.forEach((value, key) => {
+        data[key] = value;
+    });
+    
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'جاري الإرسال...';
+    
+    fetch('https://script.google.com/macros/s/AKfycbyZMq5aw3qVUp2UgfoUlWWw4Gpq7ts9bxUYLkPWXYJpcyfqOuXcZd4w4l32Q5_1aO5SkA/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        // HIDE THE FORM
+        form.style.display = 'none';
+        
+        // SHOW THE SUCCESS MESSAGE
+        successMsg.style.display = 'block';
+        
+        // OPTIONAL: Scroll to top so they see the message clearly
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        errorMsg.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'تسجيل الموردين';
+    });
+});
     </script>
 </body>
 </html>
