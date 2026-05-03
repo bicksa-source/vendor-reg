@@ -32,13 +32,12 @@
             align-items: center;
             gap: 20px;
             border-bottom: 3px solid #667eea;
-            flex-wrap: wrap;
         }
         .logo-section {
             flex-shrink: 0;
         }
         .logo {
-            max-width: 120px;
+            max-width: 150px;
             height: auto;
         }
         .header-text {
@@ -124,6 +123,10 @@
         button:active {
             transform: translateY(0);
         }
+        button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
         .form-section {
             margin-bottom: 25px;
             padding-bottom: 20px;
@@ -140,13 +143,43 @@
             padding-bottom: 10px;
             border-bottom: 2px solid #667eea;
         }
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .error-message {
+            display: none;
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
             <div class="logo-section">
-                <img src="logo.png" alt="BIC Logo" class="logo">
+                <svg width="150" height="100" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" class="logo">
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#0099CC;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#004C99;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M 30 50 L 80 100 L 30 150 L 50 150 L 100 100 L 50 50 Z" fill="url(#logoGradient)" opacity="0.9"/>
+                    <path d="M 60 50 L 110 100 L 60 150 L 80 150 L 130 100 L 80 50 Z" fill="url(#logoGradient)" opacity="0.7"/>
+                    <path d="M 90 50 L 140 100 L 90 150 L 110 150 L 160 100 L 110 50 Z" fill="url(#logoGradient)" opacity="0.5"/>
+                    <text x="200" y="110" font-size="80" font-weight="bold" fill="#1a1a5e" font-family="Arial, sans-serif">BIC</text>
+                    <text x="200" y="160" font-size="20" fill="#1a1a5e" font-family="Arial, sans-serif">Building & Innovation</text>
+                </svg>
             </div>
             <div class="header-text">
                 <div class="company-title">شركة بناء وإبداع للمقاولات العامة</div>
@@ -155,90 +188,122 @@
         </div>
         
         <div class="form-content">
-            <form action="https://script.google.com/macros/s/AKfycbyZMq5aw3qVUp2UgfoUlWWw4Gpq7ts9bxUYLkPWXYJpcyfqOuXcZd4w4l32Q5_1aO5SkA/exec" method="POST">
-                
-                <!-- معلومات الشركة -->
+            <div class="success-message" id="successMessage">تم تسجيل الموردين بنجاح! شكراً لك.</div>
+            <div class="error-message" id="errorMessage">حدث خطأ في الإرسال. يرجى المحاولة مرة أخرى.</div>
+            
+            <form id="vendorForm">
                 <div class="form-section">
                     <div class="section-title">معلومات الشركة</div>
-                    
                     <div class="form-group">
                         <label for="companyName">اسم الشركة <span class="required">*</span></label>
                         <input type="text" id="companyName" name="companyName" required>
                     </div>
-                    
                     <div class="form-group">
                         <label for="industry">المجال <span class="required">*</span></label>
                         <input type="text" id="industry" name="industry" required>
                     </div>
-                    
                     <div class="form-group">
                         <label for="servicesDescription">وصف الخدمات <span class="required">*</span></label>
                         <textarea id="servicesDescription" name="servicesDescription" required></textarea>
                     </div>
-                    
                     <div class="form-group">
                         <label for="qualificationDescription">وصف المؤهلات <span class="required">*</span></label>
                         <textarea id="qualificationDescription" name="qualificationDescription" required></textarea>
                     </div>
                 </div>
-                
-                <!-- الملفات والروابط -->
                 <div class="form-section">
                     <div class="section-title">الملفات والروابط</div>
-                    
                     <div class="form-group">
                         <label for="profileUrl">الملف التعريفي</label>
                         <input type="url" id="profileUrl" name="profileUrl">
                         <div class="optional">اختياري</div>
                     </div>
-                    
                     <div class="form-group">
                         <label for="portfolioUrl">معرض الأعمال (Portfolio)</label>
                         <input type="url" id="portfolioUrl" name="portfolioUrl">
                         <div class="optional">اختياري</div>
                     </div>
-                    
                     <div class="form-group">
                         <label for="catalogUrl">رابط الكتالوج</label>
                         <input type="url" id="catalogUrl" name="catalogUrl">
                         <div class="optional">اختياري</div>
                     </div>
-                    
                     <div class="form-group">
                         <label for="website">الموقع الإلكتروني</label>
                         <input type="url" id="website" name="website">
                         <div class="optional">اختياري</div>
                     </div>
                 </div>
-                
-                <!-- معلومات الاتصال -->
                 <div class="form-section">
                     <div class="section-title">معلومات الاتصال</div>
-                    
                     <div class="form-group">
                         <label for="contactName">جهة الإتصال <span class="required">*</span></label>
                         <input type="text" id="contactName" name="contactName" required>
                     </div>
-                    
                     <div class="form-group">
                         <label for="position">المسمى الوظيفي <span class="required">*</span></label>
                         <input type="text" id="position" name="position" required>
                     </div>
-                    
                     <div class="form-group">
                         <label for="phone">رقم الهاتف <span class="required">*</span></label>
                         <input type="tel" id="phone" name="phone" required>
                     </div>
-                    
                     <div class="form-group">
                         <label for="email">البريد الإلكتروني <span class="required">*</span></label>
                         <input type="email" id="email" name="email" required>
                     </div>
                 </div>
-                
-                <button type="submit">تسجيل الموردين</button>
+                <button type="submit" id="submitBtn">تسجيل الموردين</button>
             </form>
         </div>
     </div>
+
+    <script>
+        document.getElementById('vendorForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const form = this;
+            const successMsg = document.getElementById('successMessage');
+            const errorMsg = document.getElementById('errorMessage');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            successMsg.style.display = 'none';
+            errorMsg.style.display = 'none';
+            
+            const formData = new FormData(form);
+            const data = {};
+            
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'جاري الإرسال...';
+            
+            fetch('https://script.google.com/macros/s/AKfycbyZMq5aw3qVUp2UgfoUlWWw4Gpq7ts9bxUYLkPWXYJpcyfqOuXcZd4w4l32Q5_1aO5SkA/exec', {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                form.reset();
+                successMsg.style.display = 'block';
+                setTimeout(() => {
+                    successMsg.style.display = 'none';
+                }, 5000);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                errorMsg.style.display = 'block';
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'تسجيل الموردين';
+            });
+        });
+    </script>
 </body>
 </html>
